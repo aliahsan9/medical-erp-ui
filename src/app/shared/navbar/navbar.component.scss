@@ -1,0 +1,183 @@
+/* =========================
+   TOP BAR
+========================= */
+.topbar {
+  height: 60px;
+  background: #111827;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* LEFT SIDE */
+.left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menu-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.logo {
+  font-size: 20px;
+}
+
+/* RIGHT SIDE */
+.right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* USER */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #2563eb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: white;
+}
+
+.details {
+  line-height: 1.1;
+}
+
+.details small {
+  color: #9ca3af;
+}
+
+.email {
+  font-size: 12px;
+}
+
+/* LOGOUT */
+.logout-btn {
+  background: #ef4444;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 260px;
+  height: 100%;
+  background: #0f172a;
+  color: white;
+  transition: 0.3s;
+  z-index: 1001;
+  padding: 12px;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.sidebar-header button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 18px;
+}
+
+/* MENU LINKS */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menu a {
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.menu a:hover {
+  background: #1e293b;
+  color: white;
+}
+
+/* =========================
+   OVERLAY
+========================= */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (min-width: 992px) {
+  .menu-btn {
+    display: none;
+  }
+
+  .sidebar {
+    left: 0;
+    position: fixed;
+  }
+
+  .overlay {
+    display: none;
+  }
+
+  .topbar {
+    margin-left: 260px;
+  }
+}
