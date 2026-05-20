@@ -1,1 +1,35 @@
-<p>login works!</p>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+
+  <div class="card shadow p-4" style="width: 400px;">
+
+    <h3 class="text-center mb-3">MedicalERP Login</h3>
+
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="login()">
+
+      <div class="mb-3">
+        <label>Email</label>
+        <input type="email" class="form-control" formControlName="email">
+      </div>
+
+      <div class="mb-3">
+        <label>Password</label>
+        <input type="password" class="form-control" formControlName="password">
+      </div>
+
+      <button class="btn btn-primary w-100" [disabled]="loading">
+        {{ loading ? 'Logging in...' : 'Login' }}
+      </button>
+
+    </form>
+
+    <p class="text-center mt-3">
+      Don't have an account?
+      <a routerLink="/register">Register</a>
+    </p>
+
+  </div>
+</div>
