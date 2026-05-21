@@ -28,14 +28,9 @@ export class NavbarComponent {
       route: '/product-list'
     },
     {
-      label: 'Supplier',
-      icon: 'bi bi-cash-stack',
-      route: '/supplier'
-    },
-    {
       label: 'Sales',
       icon: 'bi bi-cash-stack',
-      route: '/sale-list'
+      route: '/sales-list'
     },
     {
       label: 'Inventory',

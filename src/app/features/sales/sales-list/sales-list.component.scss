@@ -1,0 +1,16 @@
+.sales-page {
+  padding: 20px;
+
+  h3 {
+    color: #1f2937;
+  }
+
+  .table {
+    margin-bottom: 0;
+  }
+
+  .table-hover tbody tr:hover {
+    background: #f9fafb;
+    transition: 0.2s ease;
+  }
+}

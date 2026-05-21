@@ -19,6 +19,6 @@ export const routes: Routes = [
     {path: 'purchase', component: PurchaseComponent},
     {path: 'product-form', component: ProductFormComponent},
     {path: 'product-list', component: ProductListComponent},
-    {path: 'sales-list', component: SalesCreateComponent},
+    {path: 'sales-create', component: SalesCreateComponent},
     {path: 'sales-list', component: SalesListComponent},
 ];
