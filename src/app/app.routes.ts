@@ -17,10 +17,10 @@ export const routes: Routes = [
     {path: 'register', component: RegisterComponent},
     {path: 'stock', component: StockComponent},
     {path: 'supplier', component: SupplierComponent},
-    {path: 'purchase', component: PurchaseComponent},
+    {path: 'purchases', component: PurchaseComponent},
     {path: 'product-form', component: ProductFormComponent},
     {path: 'product-list', component: ProductListComponent},
     {path: 'sales-create', component: SalesCreateComponent},
     {path: 'sales-list', component: SalesListComponent},
-    {path: 'invoice', component: InvoiceComponent},
+    {path: 'invoices', component: InvoiceComponent},
 ];

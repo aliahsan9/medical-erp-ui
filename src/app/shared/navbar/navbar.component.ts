@@ -42,10 +42,10 @@ export class NavbarComponent {
       icon: 'bi bi-receipt-cutoff',
       route: '/invoices'
     },
-    {
-      label: 'Reports',
+     {
+      label: 'Purchase',
       icon: 'bi bi-bar-chart-fill',
-      route: '/reports'
+      route: '/purchases'
     }
   ];
 
