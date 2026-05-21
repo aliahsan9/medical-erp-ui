@@ -1,0 +1,167 @@
+<div class="supplier-page">
+
+  <div class="container-fluid">
+
+    <!-- HEADER -->
+    <div class="top-section">
+
+      <div>
+        <h2>Suppliers</h2>
+        <p>Manage medical suppliers easily</p>
+      </div>
+
+      <button
+        class="btn btn-primary add-btn"
+        data-bs-toggle="modal"
+        data-bs-target="#supplierModal"
+      >
+        <i class="bi bi-plus-lg"></i>
+        Add Supplier
+      </button>
+
+    </div>
+
+    <!-- TABLE CARD -->
+    <div class="table-card">
+
+      <div class="table-responsive">
+
+        <table class="table align-middle">
+
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Address</th>
+              <th>Created</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr *ngIf="loading">
+              <td colspan="5" class="text-center py-4">
+                <div class="spinner-border text-primary"></div>
+              </td>
+            </tr>
+
+            <tr *ngFor="let supplier of suppliers; let i = index">
+
+              <td>{{ i + 1 }}</td>
+
+              <td>
+                <div class="supplier-name">
+                  <div class="avatar">
+                    {{ supplier.name.charAt(0) }}
+                  </div>
+
+                  <span>{{ supplier.name }}</span>
+                </div>
+              </td>
+
+              <td>{{ supplier.phoneNumber || '-' }}</td>
+
+              <td>{{ supplier.address || '-' }}</td>
+
+              <td>
+                {{ supplier.createdAt | date:'mediumDate' }}
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- MODAL -->
+<div
+  class="modal fade"
+  id="supplierModal"
+  tabindex="-1"
+  aria-hidden="true"
+>
+
+  <div class="modal-dialog modal-dialog-centered">
+
+    <div class="modal-content custom-modal">
+
+      <div class="modal-header border-0">
+        <h5 class="modal-title">Add Supplier</h5>
+
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="mb-3">
+          <label class="form-label">Supplier Name</label>
+
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="supplier.name"
+            placeholder="Enter supplier name"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Phone Number</label>
+
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="supplier.phoneNumber"
+            placeholder="Enter phone number"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Address</label>
+
+          <textarea
+            rows="3"
+            class="form-control"
+            [(ngModel)]="supplier.address"
+            placeholder="Enter address"
+          ></textarea>
+        </div>
+
+      </div>
+
+      <div class="modal-footer border-0">
+
+        <button
+          class="btn btn-light"
+          data-bs-dismiss="modal"
+        >
+          Cancel
+        </button>
+
+        <button
+          class="btn btn-primary"
+          (click)="createSupplier()"
+          data-bs-dismiss="modal"
+        >
+          Save Supplier
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

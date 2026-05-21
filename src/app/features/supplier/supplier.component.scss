@@ -1,0 +1,177 @@
+.supplier-page {
+  padding: 1.5rem;
+  min-height: 100vh;
+  background: #f4f7fb;
+  overflow-x: hidden;
+}
+
+/* TOP SECTION */
+.top-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+
+  h2 {
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    color: #111827;
+  }
+
+  p {
+    color: #6b7280;
+    margin: 0;
+  }
+}
+
+.add-btn {
+  border-radius: 12px;
+  padding: 0.7rem 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* TABLE CARD */
+.table-card {
+  background: white;
+  border-radius: 20px;
+  padding: 1rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+.table {
+  margin: 0;
+}
+
+thead {
+  background: #f9fafb;
+
+  th {
+    border: none;
+    padding: 1rem;
+    color: #6b7280;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+}
+
+tbody {
+
+  tr {
+    transition: 0.2s ease;
+  }
+
+  tr:hover {
+    background: #f8fafc;
+  }
+
+  td {
+    padding: 1rem;
+    border-top: 1px solid #f1f5f9;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+}
+
+/* SUPPLIER */
+.supplier-name {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  span {
+    font-weight: 600;
+    color: #111827;
+  }
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* MODAL */
+.custom-modal {
+  border: none;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: 1.2rem 1.5rem;
+}
+
+.modal-title {
+  font-weight: 700;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.form-control {
+  border-radius: 12px;
+  min-height: 48px;
+  border: 1px solid #d1d5db;
+  box-shadow: none;
+
+  &:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 0.15rem rgba(37,99,235,0.2);
+  }
+}
+
+textarea.form-control {
+  min-height: 100px;
+}
+
+.btn {
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  .supplier-page {
+    padding: 1rem;
+  }
+
+  .top-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .add-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .table-card {
+    padding: 0.5rem;
+    border-radius: 16px;
+  }
+
+  table {
+    min-width: 700px;
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+}

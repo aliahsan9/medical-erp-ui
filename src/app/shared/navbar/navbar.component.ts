@@ -20,22 +20,27 @@ export class NavbarComponent {
     {
       label: 'Dashboard',
       icon: 'bi bi-grid-1x2-fill',
-      route: '/dashboard'
+      route: '/'
     },
     {
       label: 'Products',
       icon: 'bi bi-capsule-pill',
-      route: '/products'
+      route: '/product-list'
+    },
+    {
+      label: 'Supplier',
+      icon: 'bi bi-cash-stack',
+      route: '/supplier'
     },
     {
       label: 'Sales',
       icon: 'bi bi-cash-stack',
-      route: '/sales'
+      route: '/sale-list'
     },
     {
       label: 'Inventory',
       icon: 'bi bi-box-seam',
-      route: '/inventory'
+      route: '/stock'
     },
     {
       label: 'Invoices',
