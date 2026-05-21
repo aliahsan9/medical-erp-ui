@@ -1,201 +1,107 @@
-<div class="dashboard-container">
+<div class="container-fluid dashboard">
 
-  <!-- ========================= -->
-  <!-- TOP HEADER -->
-  <!-- ========================= -->
-  <div class="dashboard-header">
+  <!-- ================= SUMMARY CARDS ================= -->
+  <div class="row g-3 mb-4">
 
-    <div>
-      <h1>MedicalERP Dashboard</h1>
-      <p>Welcome back 👋 Here's your business overview.</p>
+    <div class="col-lg-3 col-md-6">
+      <div class="card p-3 shadow-sm">
+        <h6>Today's Sales</h6>
+        <h4 class="text-success">
+          {{ summary?.todaySales | currency:'PKR' }}
+        </h4>
+      </div>
     </div>
 
-    <div class="header-actions">
-      <button class="btn btn-light">
-        <i class="bi bi-bell"></i>
-      </button>
+    <div class="col-lg-3 col-md-6">
+      <div class="card p-3 shadow-sm">
+        <h6>Monthly Sales</h6>
+        <h4 class="text-primary">
+          {{ summary?.monthlySales | currency:'PKR' }}
+        </h4>
+      </div>
+    </div>
 
-      <button class="btn btn-primary">
-        <i class="bi bi-plus-lg"></i>
-        Add New
-      </button>
+    <div class="col-lg-3 col-md-6">
+      <div class="card p-3 shadow-sm">
+        <h6>Total Products</h6>
+        <h4>{{ summary?.totalProducts }}</h4>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+      <div class="card p-3 shadow-sm">
+        <h6>Low Stock</h6>
+        <h4 class="text-danger">
+          {{ summary?.lowStockProducts }}
+        </h4>
+      </div>
     </div>
 
   </div>
 
-  <!-- ========================= -->
-  <!-- KPI SECTION -->
-  <!-- ========================= -->
-  <div class="row g-4">
+  <!-- ================= CHART + LISTS ================= -->
+  <div class="row g-3">
 
-    <!-- SALES -->
-    <div class="col-12 col-sm-6 col-xl-3">
-
-      <div class="modern-card sales-card">
-
-        <div class="card-icon">
-          <i class="bi bi-cash-stack"></i>
-        </div>
-
-        <div class="card-content">
-          <span>Total Sales</span>
-          <h2>₨ {{ totalSales }}</h2>
-          <small>+12% this month</small>
-        </div>
-
+    <!-- SALES CHART -->
+    <div class="col-lg-8">
+      <div class="card p-3 shadow-sm">
+        <h5>Sales Report (7 Days)</h5>
+        <canvas id="salesChart"></canvas>
       </div>
-
-    </div>
-
-    <!-- PRODUCTS -->
-    <div class="col-12 col-sm-6 col-xl-3">
-
-      <div class="modern-card product-card">
-
-        <div class="card-icon">
-          <i class="bi bi-capsule-pill"></i>
-        </div>
-
-        <div class="card-content">
-          <span>Products</span>
-          <h2>{{ totalProducts }}</h2>
-          <small>Inventory available</small>
-        </div>
-
-      </div>
-
     </div>
 
     <!-- LOW STOCK -->
-    <div class="col-12 col-sm-6 col-xl-3">
+    <div class="col-lg-4">
+      <div class="card p-3 shadow-sm">
+        <h5>Low Stock</h5>
 
-      <div class="modern-card warning-card">
-
-        <div class="card-icon">
-          <i class="bi bi-exclamation-triangle"></i>
-        </div>
-
-        <div class="card-content">
-          <span>Low Stock</span>
-          <h2>{{ lowStockItems }}</h2>
-          <small>Need attention</small>
+        <div *ngFor="let p of lowStock" class="border-bottom py-2">
+          <div class="fw-semibold">{{ p.productName }}</div>
+          <small class="text-danger">
+            Qty: {{ p.quantity }}
+          </small>
         </div>
 
       </div>
-
-    </div>
-
-    <!-- INVOICES -->
-    <div class="col-12 col-sm-6 col-xl-3">
-
-      <div class="modern-card invoice-card">
-
-        <div class="card-icon">
-          <i class="bi bi-receipt"></i>
-        </div>
-
-        <div class="card-content">
-          <span>Invoices</span>
-          <h2>{{ totalInvoices }}</h2>
-          <small>Generated today</small>
-        </div>
-
-      </div>
-
     </div>
 
   </div>
 
-  <!-- ========================= -->
-  <!-- CHART SECTION -->
-  <!-- ========================= -->
-  <div class="row mt-4 g-4">
+  <!-- ================= EXPIRING PRODUCTS ================= -->
+  <div class="row mt-3">
 
-    <!-- SALES CHART -->
-    <div class="col-12 col-lg-8">
+    <div class="col-12">
+      <div class="card p-3 shadow-sm">
 
-      <div class="chart-card">
+        <h5>Expiring Products</h5>
 
-        <div class="card-top">
-          <h4>Sales Analytics</h4>
-          <button class="btn btn-sm btn-light">
-            This Month
-          </button>
-        </div>
+        <div class="table-responsive">
+          <table class="table table-hover">
 
-        <div class="chart-wrapper">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Expiry</th>
+                <th>Days Left</th>
+              </tr>
+            </thead>
 
-          <div
-            class="chart-bar"
-            *ngFor="let s of salesChart"
-            [style.height.%]="s / 400">
+            <tbody>
+              <tr *ngFor="let e of expiring">
+                <td>{{ e.productName }}</td>
+                <td>{{ e.expiryDate | date }}</td>
+                <td>
+                  <span class="badge bg-warning text-dark">
+                    {{ e.daysRemaining }}
+                  </span>
+                </td>
+              </tr>
+            </tbody>
 
-            <span>₨{{ s }}</span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- ACTIVITY -->
-    <div class="col-12 col-lg-4">
-
-      <div class="activity-card">
-
-        <h4>Recent Activity</h4>
-
-        <div class="activity-item">
-          <div class="dot bg-success"></div>
-          <span>New sale completed</span>
-        </div>
-
-        <div class="activity-item">
-          <div class="dot bg-primary"></div>
-          <span>Invoice generated</span>
-        </div>
-
-        <div class="activity-item">
-          <div class="dot bg-warning"></div>
-          <span>Low stock alert</span>
-        </div>
-
-        <div class="activity-item">
-          <div class="dot bg-danger"></div>
-          <span>Product expired</span>
+          </table>
         </div>
 
       </div>
-
-    </div>
-
-  </div>
-
-  <!-- ========================= -->
-  <!-- QUICK ACTIONS -->
-  <!-- ========================= -->
-  <div class="quick-actions mt-4">
-
-    <div class="action-card">
-      <i class="bi bi-plus-circle-fill"></i>
-      <span>Add Product</span>
-    </div>
-
-    <div class="action-card">
-      <i class="bi bi-cart-check-fill"></i>
-      <span>New Sale</span>
-    </div>
-
-    <div class="action-card">
-      <i class="bi bi-box-seam"></i>
-      <span>Manage Stock</span>
-    </div>
-
-    <div class="action-card">
-      <i class="bi bi-bar-chart-fill"></i>
-      <span>Reports</span>
     </div>
 
   </div>

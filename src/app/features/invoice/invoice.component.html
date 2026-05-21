@@ -1,0 +1,56 @@
+<div class="container-fluid invoice-page">
+
+  <!-- HEADER -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="fw-bold">Invoices</h3>
+  </div>
+
+  <!-- TABLE CARD -->
+  <div class="card shadow-sm p-3">
+
+    <div class="table-responsive">
+
+      <table class="table table-hover align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Invoice #</th>
+            <th>Customer</th>
+            <th>Total</th>
+            <th>Date</th>
+            <th class="text-end">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let s of sales">
+
+            <td class="fw-semibold">{{ s.invoiceNumber }}</td>
+            <td>{{ s.customerName }}</td>
+
+            <td class="text-success fw-bold">
+              {{ s.totalAmount | currency:'PKR' }}
+            </td>
+
+            <td>{{ s.createdAt | date:'short' }}</td>
+
+            <td class="text-end">
+              <button
+                class="btn btn-sm btn-outline-primary"
+                (click)="downloadInvoice(s.id, s.invoiceNumber)">
+                Download PDF
+              </button>
+            </td>
+
+          </tr>
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <div *ngIf="!sales.length && !loading" class="text-center text-muted py-4">
+      No invoices found
+    </div>
+
+  </div>
+</div>

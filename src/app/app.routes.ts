@@ -9,6 +9,7 @@ import { SalesCreateComponent } from './features/sales/sales-create/sales-create
 import { SalesListComponent } from './features/sales/sales-list/sales-list.component';
 import { SupplierComponent } from './features/supplier/supplier.component';
 import { PurchaseComponent } from './features/purchase/purchase.component';
+import { InvoiceComponent } from './features/invoice/invoice.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -21,4 +22,5 @@ export const routes: Routes = [
     {path: 'product-list', component: ProductListComponent},
     {path: 'sales-create', component: SalesCreateComponent},
     {path: 'sales-list', component: SalesListComponent},
+    {path: 'invoice', component: InvoiceComponent},
 ];

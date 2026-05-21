@@ -1,0 +1,25 @@
+.invoice-page {
+  padding: 20px;
+
+  h3 {
+    color: #1f2937;
+  }
+
+  .card {
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  .table-hover tbody tr:hover {
+    background: #f9fafb;
+    transition: 0.2s ease;
+  }
+
+  button {
+    border-radius: 8px;
+  }
+}
