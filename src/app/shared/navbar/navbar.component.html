@@ -1,59 +1,176 @@
-TOP NAVBAR
-<header class="topbar">
+<!-- ======================
+     TOP NAVBAR
+======================= -->
+<header class="navbar-wrapper">
 
   <!-- LEFT -->
-  <div class="left">
-    <button class="menu-btn" (click)="toggleSidebar()">
-      ☰
+  <div class="navbar-left">
+
+    <!-- MOBILE MENU -->
+    <button
+      class="menu-btn d-lg-none"
+      (click)="toggleSidebar()">
+
+      <i class="bi bi-list"></i>
+
     </button>
 
+    <!-- BRAND -->
     <div class="brand">
-      <span class="logo">💊</span>
-      <span>MedicalERP</span>
+
+      <div class="brand-logo">
+        💊
+      </div>
+
+      <div class="brand-text">
+        MedicalERP
+      </div>
+
     </div>
+
   </div>
 
-  <!-- RIGHT -->
-  <div class="right">
+  <!-- DESKTOP LINKS -->
+  <nav class="desktop-nav d-none d-lg-flex">
 
-    <div class="user-info">
+    <a
+      *ngFor="let item of navLinks"
+      [routerLink]="item.route"
+      routerLinkActive="active-link">
+
+      <i [class]="item.icon"></i>
+      <span>{{ item.label }}</span>
+
+    </a>
+
+  </nav>
+
+  <!-- RIGHT -->
+  <div class="navbar-right">
+
+    <div class="user-box">
+
       <div class="avatar">
-        {{ user?.email?.charAt(0) || 'U' }}
+        {{ user?.email?.charAt(0)?.toUpperCase() || 'U' }}
       </div>
-      <div class="details">
+
+      <div class="user-info d-none d-sm-block">
+
         <small>{{ user?.role }}</small>
-        <div class="email">{{ user?.email }}</div>
+
+        <p>
+          {{ user?.email }}
+        </p>
+
       </div>
+
     </div>
 
-    <button class="logout-btn" (click)="logout()">
-      Logout
+    <button
+      class="logout-btn"
+      (click)="logout()">
+
+      <i class="bi bi-box-arrow-right"></i>
+
     </button>
 
   </div>
 
 </header>
 
-<!-- OVERLAY -->
-<div class="overlay" *ngIf="sidebarOpen" (click)="closeSidebar()"></div>
+<!-- ======================
+     OVERLAY
+======================= -->
+<div
+  class="mobile-overlay"
+  [class.show]="sidebarOpen"
+  (click)="closeSidebar()">
 
-<!-- SIDEBAR -->
-<aside class="sidebar" [class.open]="sidebarOpen">
+</div>
 
-  <div class="sidebar-header">
-    <h5>Menu</h5>
-    <button (click)="closeSidebar()">✕</button>
+<!-- ======================
+     MOBILE SIDEBAR
+======================= -->
+<aside
+  class="mobile-sidebar"
+  [class.open]="sidebarOpen">
+
+  <!-- SIDEBAR HEADER -->
+  <div class="sidebar-top">
+
+    <div class="sidebar-brand">
+
+      <div class="sidebar-logo">
+        💊
+      </div>
+
+      <div>
+        <h5>MedicalERP</h5>
+        <small>Management System</small>
+      </div>
+
+    </div>
+
+    <button
+      class="close-btn"
+      (click)="closeSidebar()">
+
+      <i class="bi bi-x-lg"></i>
+
+    </button>
+
   </div>
 
-  <nav class="menu">
+  <!-- USER -->
+  <div class="mobile-user">
 
-    <a routerLink="/dashboard" (click)="closeSidebar()">📊 Dashboard</a>
-    <a routerLink="/products" (click)="closeSidebar()">💊 Products</a>
-    <a routerLink="/sales" (click)="closeSidebar()">💰 Sales</a>
-    <a routerLink="/inventory" (click)="closeSidebar()">📦 Inventory</a>
-    <a routerLink="/invoices" (click)="closeSidebar()">📄 Invoices</a>
-    <a routerLink="/reports" (click)="closeSidebar()">📈 Reports</a>
+    <div class="mobile-avatar">
+      {{ user?.email?.charAt(0)?.toUpperCase() || 'U' }}
+    </div>
+
+    <div>
+      <h6>{{ user?.role }}</h6>
+      <p>{{ user?.email }}</p>
+    </div>
+
+  </div>
+
+  <!-- LINKS -->
+  <nav class="mobile-links">
+
+    <a
+      *ngFor="let item of navLinks"
+      [routerLink]="item.route"
+      routerLinkActive="active-link"
+      (click)="closeSidebar()">
+
+      <div class="link-left">
+
+        <i [class]="item.icon"></i>
+
+        <span>{{ item.label }}</span>
+
+      </div>
+
+      <i class="bi bi-chevron-right"></i>
+
+    </a>
 
   </nav>
+
+  <!-- LOGOUT -->
+  <div class="sidebar-footer">
+
+    <button
+      class="mobile-logout"
+      (click)="logout()">
+
+      <i class="bi bi-box-arrow-right"></i>
+
+      Logout
+
+    </button>
+
+  </div>
 
 </aside>

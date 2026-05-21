@@ -1,54 +1,107 @@
-<div class="container-fluid dashboard">
+<div class="dashboard-container">
 
   <!-- ========================= -->
-  <!-- HEADER -->
+  <!-- TOP HEADER -->
   <!-- ========================= -->
-  <div class="row mb-4">
-    <div class="col-12">
-      <h2 class="fw-bold">MedicalERP Dashboard</h2>
-      <p class="text-muted">Welcome back! Here's your system overview.</p>
+  <div class="dashboard-header">
+
+    <div>
+      <h1>MedicalERP Dashboard</h1>
+      <p>Welcome back 👋 Here's your business overview.</p>
     </div>
+
+    <div class="header-actions">
+      <button class="btn btn-light">
+        <i class="bi bi-bell"></i>
+      </button>
+
+      <button class="btn btn-primary">
+        <i class="bi bi-plus-lg"></i>
+        Add New
+      </button>
+    </div>
+
   </div>
 
   <!-- ========================= -->
-  <!-- KPI CARDS -->
+  <!-- KPI SECTION -->
   <!-- ========================= -->
-  <div class="row g-3">
+  <div class="row g-4">
 
-    <div class="col-12 col-md-3">
-      <div class="card kpi-card bg-primary text-white">
-        <div class="card-body">
-          <h6>Total Sales</h6>
-          <h3>₨ {{ totalSales }}</h3>
+    <!-- SALES -->
+    <div class="col-12 col-sm-6 col-xl-3">
+
+      <div class="modern-card sales-card">
+
+        <div class="card-icon">
+          <i class="bi bi-cash-stack"></i>
         </div>
+
+        <div class="card-content">
+          <span>Total Sales</span>
+          <h2>₨ {{ totalSales }}</h2>
+          <small>+12% this month</small>
+        </div>
+
       </div>
+
     </div>
 
-    <div class="col-12 col-md-3">
-      <div class="card kpi-card bg-success text-white">
-        <div class="card-body">
-          <h6>Products</h6>
-          <h3>{{ totalProducts }}</h3>
+    <!-- PRODUCTS -->
+    <div class="col-12 col-sm-6 col-xl-3">
+
+      <div class="modern-card product-card">
+
+        <div class="card-icon">
+          <i class="bi bi-capsule-pill"></i>
         </div>
+
+        <div class="card-content">
+          <span>Products</span>
+          <h2>{{ totalProducts }}</h2>
+          <small>Inventory available</small>
+        </div>
+
       </div>
+
     </div>
 
-    <div class="col-12 col-md-3">
-      <div class="card kpi-card bg-warning text-dark">
-        <div class="card-body">
-          <h6>Low Stock</h6>
-          <h3>{{ lowStockItems }}</h3>
+    <!-- LOW STOCK -->
+    <div class="col-12 col-sm-6 col-xl-3">
+
+      <div class="modern-card warning-card">
+
+        <div class="card-icon">
+          <i class="bi bi-exclamation-triangle"></i>
         </div>
+
+        <div class="card-content">
+          <span>Low Stock</span>
+          <h2>{{ lowStockItems }}</h2>
+          <small>Need attention</small>
+        </div>
+
       </div>
+
     </div>
 
-    <div class="col-12 col-md-3">
-      <div class="card kpi-card bg-danger text-white">
-        <div class="card-body">
-          <h6>Invoices</h6>
-          <h3>{{ totalInvoices }}</h3>
+    <!-- INVOICES -->
+    <div class="col-12 col-sm-6 col-xl-3">
+
+      <div class="modern-card invoice-card">
+
+        <div class="card-icon">
+          <i class="bi bi-receipt"></i>
         </div>
+
+        <div class="card-content">
+          <span>Invoices</span>
+          <h2>{{ totalInvoices }}</h2>
+          <small>Generated today</small>
+        </div>
+
       </div>
+
     </div>
 
   </div>
@@ -56,38 +109,66 @@
   <!-- ========================= -->
   <!-- CHART SECTION -->
   <!-- ========================= -->
-  <div class="row mt-4 g-3">
+  <div class="row mt-4 g-4">
 
     <!-- SALES CHART -->
-    <div class="col-12 col-lg-6">
-      <div class="card chart-card">
-        <div class="card-body">
-          <h5>Sales Overview</h5>
+    <div class="col-12 col-lg-8">
 
-          <div class="chart">
-            <div class="bar" *ngFor="let s of salesChart"
-                 [style.height.%]="s / 400">
-            </div>
+      <div class="chart-card">
+
+        <div class="card-top">
+          <h4>Sales Analytics</h4>
+          <button class="btn btn-sm btn-light">
+            This Month
+          </button>
+        </div>
+
+        <div class="chart-wrapper">
+
+          <div
+            class="chart-bar"
+            *ngFor="let s of salesChart"
+            [style.height.%]="s / 400">
+
+            <span>₨{{ s }}</span>
+
           </div>
 
         </div>
+
       </div>
+
     </div>
 
-    <!-- STOCK CHART -->
-    <div class="col-12 col-lg-6">
-      <div class="card chart-card">
-        <div class="card-body">
-          <h5>Stock Levels</h5>
+    <!-- ACTIVITY -->
+    <div class="col-12 col-lg-4">
 
-          <div class="chart stock">
-            <div class="bar" *ngFor="let s of stockChart"
-                 [style.height.%]="s">
-            </div>
-          </div>
+      <div class="activity-card">
 
+        <h4>Recent Activity</h4>
+
+        <div class="activity-item">
+          <div class="dot bg-success"></div>
+          <span>New sale completed</span>
         </div>
+
+        <div class="activity-item">
+          <div class="dot bg-primary"></div>
+          <span>Invoice generated</span>
+        </div>
+
+        <div class="activity-item">
+          <div class="dot bg-warning"></div>
+          <span>Low stock alert</span>
+        </div>
+
+        <div class="activity-item">
+          <div class="dot bg-danger"></div>
+          <span>Product expired</span>
+        </div>
+
       </div>
+
     </div>
 
   </div>
@@ -95,22 +176,26 @@
   <!-- ========================= -->
   <!-- QUICK ACTIONS -->
   <!-- ========================= -->
-  <div class="row mt-4">
+  <div class="quick-actions mt-4">
 
-    <div class="col-12">
-      <div class="card p-3">
-        <h5>Quick Actions</h5>
+    <div class="action-card">
+      <i class="bi bi-plus-circle-fill"></i>
+      <span>Add Product</span>
+    </div>
 
-        <div class="d-flex flex-wrap gap-2 mt-2">
+    <div class="action-card">
+      <i class="bi bi-cart-check-fill"></i>
+      <span>New Sale</span>
+    </div>
 
-          <button class="btn btn-primary">➕ Add Product</button>
-          <button class="btn btn-success">💰 New Sale</button>
-          <button class="btn btn-warning">📦 Stock Entry</button>
-          <button class="btn btn-dark">📄 View Reports</button>
+    <div class="action-card">
+      <i class="bi bi-box-seam"></i>
+      <span>Manage Stock</span>
+    </div>
 
-        </div>
-
-      </div>
+    <div class="action-card">
+      <i class="bi bi-bar-chart-fill"></i>
+      <span>Reports</span>
     </div>
 
   </div>

@@ -1,0 +1,294 @@
+.modern-footer {
+
+  background: #ffffff;
+
+  border-top:
+    1px solid #e5e7eb;
+
+  margin-top: 60px;
+
+  overflow: hidden;
+}
+
+.footer-container {
+
+  padding:
+    60px 40px 20px;
+}
+
+/* =========================
+   BRAND
+========================= */
+
+.footer-brand {
+
+  .brand-logo {
+
+    width: 70px;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 20px;
+
+    background:
+      linear-gradient(
+        135deg,
+        #4f46e5,
+        #6366f1
+      );
+
+    margin-bottom: 20px;
+
+    box-shadow:
+      0 10px 20px rgba(79, 70, 229, 0.2);
+
+    i {
+      color: white;
+      font-size: 2rem;
+    }
+  }
+
+  h2 {
+
+    font-size: 2rem;
+    font-weight: 700;
+
+    color: #111827;
+
+    margin-bottom: 15px;
+  }
+
+  p {
+
+    color: #6b7280;
+
+    line-height: 1.8;
+
+    max-width: 350px;
+  }
+}
+
+/* =========================
+   LINKS
+========================= */
+
+.footer-links,
+.footer-contact {
+
+  h5 {
+
+    color: #111827;
+
+    font-weight: 700;
+
+    margin-bottom: 20px;
+
+    font-size: 1.1rem;
+  }
+}
+
+.footer-links {
+
+  a {
+
+    display: block;
+
+    text-decoration: none;
+
+    color: #6b7280;
+
+    margin-bottom: 14px;
+
+    transition: 0.3s ease;
+
+    font-weight: 500;
+
+    &:hover {
+
+      color: #4f46e5;
+
+      transform: translateX(5px);
+    }
+  }
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-item {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 16px;
+
+  color: #6b7280;
+
+  i {
+
+    color: #4f46e5;
+
+    font-size: 1.1rem;
+  }
+}
+
+/* =========================
+   SOCIAL
+========================= */
+
+.social-links {
+
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 25px;
+
+  flex-wrap: wrap;
+
+  a {
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: #f3f4f6;
+
+    color: #111827;
+
+    text-decoration: none;
+
+    transition: 0.3s ease;
+
+    font-size: 1.1rem;
+
+    &:hover {
+
+      background:
+        linear-gradient(
+          135deg,
+          #4f46e5,
+          #6366f1
+        );
+
+      color: white;
+
+      transform:
+        translateY(-5px);
+    }
+  }
+}
+
+/* =========================
+   FOOTER BOTTOM
+========================= */
+
+.footer-bottom {
+
+  margin-top: 50px;
+
+  padding-top: 20px;
+
+  border-top:
+    1px solid #e5e7eb;
+
+  text-align: center;
+
+  p {
+
+    margin: 0;
+
+    color: #6b7280;
+
+    font-size: 14px;
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 992px) {
+
+  .footer-container {
+
+    padding:
+      50px 25px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .footer-container {
+
+    padding:
+      40px 20px 20px;
+  }
+
+  .footer-brand {
+
+    text-align: center;
+
+    .brand-logo {
+
+      margin:
+        0 auto 20px;
+    }
+
+    p {
+
+      margin:
+        auto;
+    }
+  }
+
+  .footer-links,
+  .footer-contact {
+
+    text-align: center;
+
+    margin-top: 15px;
+  }
+
+  .contact-item {
+
+    justify-content: center;
+  }
+
+  .social-links {
+
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+
+  .footer-brand h2 {
+
+    font-size: 1.7rem;
+  }
+
+  .social-links a {
+
+    width: 40px;
+    height: 40px;
+  }
+
+  .footer-links h5,
+  .footer-contact h5 {
+
+    font-size: 1rem;
+  }
+}
