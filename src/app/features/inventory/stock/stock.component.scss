@@ -1,0 +1,37 @@
+.stock-page {
+  padding: 20px;
+
+  .card {
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+  }
+
+  h3, h5 {
+    color: #1f2937;
+  }
+
+  label {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: #374151;
+  }
+
+  input, select, textarea {
+    border-radius: 8px;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  .badge {
+    padding: 6px 10px;
+    border-radius: 6px;
+  }
+
+  .table-hover tbody tr:hover {
+    background: #f9fafb;
+    transition: 0.2s;
+  }
+}
