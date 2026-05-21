@@ -1,1 +1,122 @@
-<p>product-list works!</p>
+<div class="product-page">
+
+  <div class="container-fluid">
+
+    <!-- FORM -->
+    <app-product-form
+      (productCreated)="loadProducts()"
+    ></app-product-form>
+
+    <!-- TABLE -->
+    <div class="table-card">
+
+      <div class="topbar">
+
+        <div>
+          <h3>Products</h3>
+          <p>Medical inventory product list</p>
+        </div>
+
+      </div>
+
+      <div class="table-responsive">
+
+        <table class="table align-middle">
+
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Expiry</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr *ngIf="loading">
+
+              <td colspan="7" class="text-center py-5">
+                <div class="spinner-border text-primary"></div>
+              </td>
+
+            </tr>
+
+            <tr *ngFor="let product of products">
+
+              <td>
+
+                <div class="product-info">
+
+                  <div class="avatar">
+                    {{ product.name.charAt(0) }}
+                  </div>
+
+                  <div>
+                    <h6>{{ product.name }}</h6>
+                    <small>{{ product.barcode }}</small>
+                  </div>
+
+                </div>
+
+              </td>
+
+              <td>{{ product.category }}</td>
+
+              <td>
+                ${{ product.price }}
+              </td>
+
+              <td>
+
+                <span
+                  class="stock-badge"
+                  [class.low-stock]="product.stockQuantity < 10"
+                >
+                  {{ product.stockQuantity }}
+                </span>
+
+              </td>
+
+              <td>
+                {{ product.expiryDate | date:'mediumDate' }}
+              </td>
+
+              <td>
+
+                <span
+                  class="status"
+                  [class.active]="product.isActive"
+                >
+                  {{ product.isActive ? 'Active' : 'Inactive' }}
+                </span>
+
+              </td>
+
+              <td>
+
+                <button
+                  class="btn btn-danger btn-sm"
+                  (click)="deleteProduct(product.id!)"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
