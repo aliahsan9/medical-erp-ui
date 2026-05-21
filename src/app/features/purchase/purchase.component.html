@@ -1,1 +1,285 @@
-<p>purchase works!</p>
+<div class="purchase-page">
+
+  <div class="container-fluid">
+
+    <!-- HEADER -->
+
+    <div class="page-header">
+
+      <div>
+
+        <h2>Purchase Management</h2>
+
+        <p>
+          Manage supplier purchases and stock entries
+        </p>
+
+      </div>
+
+    </div>
+
+    <!-- PURCHASE FORM -->
+
+    <div class="purchase-card">
+
+      <div class="card-header-custom">
+
+        <h4>Create Purchase</h4>
+
+      </div>
+
+      <!-- SUPPLIER -->
+
+      <div class="row g-4">
+
+        <div class="col-12 col-lg-6">
+
+          <label class="form-label">
+            Supplier
+          </label>
+
+          <select
+            class="form-select"
+            [(ngModel)]="selectedSupplier"
+          >
+
+            <option value="">
+              Select Supplier
+            </option>
+
+            <option
+              *ngFor="let supplier of suppliers"
+              [value]="supplier.id"
+            >
+              {{ supplier.name }}
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+      <!-- ITEMS -->
+
+      <div
+        class="item-card"
+        *ngFor="
+          let item of purchaseItems;
+          let i = index
+        "
+      >
+
+        <div class="row g-3 align-items-end">
+
+          <div class="col-12 col-lg-5">
+
+            <label class="form-label">
+              Product
+            </label>
+
+            <select
+              class="form-select"
+              [(ngModel)]="item.productId"
+            >
+
+              <option value="">
+                Select Product
+              </option>
+
+              <option
+                *ngFor="let product of products"
+                [value]="product.id"
+              >
+                {{ product.name }}
+              </option>
+
+            </select>
+
+          </div>
+
+          <div class="col-6 col-lg-2">
+
+            <label class="form-label">
+              Quantity
+            </label>
+
+            <input
+              type="number"
+              class="form-control"
+              [(ngModel)]="item.quantity"
+            />
+
+          </div>
+
+          <div class="col-6 col-lg-3">
+
+            <label class="form-label">
+              Unit Cost
+            </label>
+
+            <input
+              type="number"
+              class="form-control"
+              [(ngModel)]="item.unitCostPrice"
+            />
+
+          </div>
+
+          <div class="col-12 col-lg-2">
+
+            <button
+              class="btn btn-danger w-100"
+              (click)="removeItem(i)"
+              *ngIf="purchaseItems.length > 1"
+            >
+
+              <i class="bi bi-trash"></i>
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ACTIONS -->
+
+      <div class="actions">
+
+        <button
+          class="btn btn-light add-btn"
+          (click)="addItem()"
+        >
+
+          <i class="bi bi-plus-circle"></i>
+          Add Item
+
+        </button>
+
+        <div class="total-box">
+
+          Total:
+          ₨ {{ getTotal() }}
+
+        </div>
+
+      </div>
+
+      <button
+        class="btn submit-btn"
+        (click)="submitPurchase()"
+      >
+
+        <i class="bi bi-check-circle"></i>
+
+        Create Purchase
+
+      </button>
+
+    </div>
+
+    <!-- PURCHASE TABLE -->
+
+    <div class="table-card">
+
+      <div class="table-top">
+
+        <div>
+
+          <h4>Purchase History</h4>
+
+          <p>
+            All purchase invoices
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="table-responsive">
+
+        <table class="table align-middle">
+
+          <thead>
+
+            <tr>
+
+              <th>Invoice</th>
+              <th>Supplier</th>
+              <th>Total</th>
+              <th>Date</th>
+              <th>Items</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            <tr *ngIf="loading">
+
+              <td colspan="5" class="text-center py-5">
+
+                <div
+                  class="spinner-border text-primary"
+                ></div>
+
+              </td>
+
+            </tr>
+
+            <tr *ngFor="let purchase of purchases">
+
+              <td>
+
+                <span class="invoice-badge">
+
+                  {{ purchase.invoiceNumber }}
+
+                </span>
+
+              </td>
+
+              <td>
+                {{ purchase.supplierName }}
+              </td>
+
+              <td>
+                ₨ {{ purchase.totalAmount }}
+              </td>
+
+              <td>
+                {{ purchase.createdAt | date }}
+              </td>
+
+              <td>
+
+                <div
+                  class="item-pill"
+                  *ngFor="
+                    let item of purchase.items
+                  "
+                >
+
+                  {{ item.productName }}
+                  ({{ item.quantity }})
+
+                </div>
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

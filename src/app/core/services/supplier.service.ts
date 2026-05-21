@@ -15,16 +15,80 @@ export interface Supplier {
 })
 export class SupplierService {
 
-  private apiUrl = 'https://localhost:7165/api/suppliers';
-  // change port according to your backend
+  // =========================
+  // API URL
+  // =========================
 
-  constructor(private http: HttpClient) {}
+  private apiUrl =
+    'https://localhost:7165/api/suppliers';
+
+  constructor(
+    private http: HttpClient
+  ) {}
+
+  // =========================
+  // GET ALL SUPPLIERS
+  // =========================
 
   getSuppliers(): Observable<Supplier[]> {
-    return this.http.get<Supplier[]>(this.apiUrl);
+
+    return this.http.get<Supplier[]>(
+      this.apiUrl
+    );
   }
 
-  createSupplier(data: Supplier): Observable<Supplier> {
-    return this.http.post<Supplier>(this.apiUrl, data);
+  // =========================
+  // GET SINGLE SUPPLIER
+  // =========================
+
+  getSupplierById(
+    id: string
+  ): Observable<Supplier> {
+
+    return this.http.get<Supplier>(
+      `${this.apiUrl}/${id}`
+    );
+  }
+
+  // =========================
+  // CREATE SUPPLIER
+  // =========================
+
+  createSupplier(
+    data: Supplier
+  ): Observable<Supplier> {
+
+    return this.http.post<Supplier>(
+      this.apiUrl,
+      data
+    );
+  }
+
+  // =========================
+  // UPDATE SUPPLIER
+  // =========================
+
+  updateSupplier(
+    id: string,
+    data: Supplier
+  ): Observable<any> {
+
+    return this.http.put(
+      `${this.apiUrl}/${id}`,
+      data
+    );
+  }
+
+  // =========================
+  // DELETE SUPPLIER
+  // =========================
+
+  deleteSupplier(
+    id: string
+  ): Observable<any> {
+
+    return this.http.delete(
+      `${this.apiUrl}/${id}`
+    );
   }
 }

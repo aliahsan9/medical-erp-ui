@@ -8,6 +8,7 @@ import { ProductListComponent } from './features/products/product-list/product-l
 import { SalesCreateComponent } from './features/sales/sales-create/sales-create.component';
 import { SalesListComponent } from './features/sales/sales-list/sales-list.component';
 import { SupplierComponent } from './features/supplier/supplier.component';
+import { PurchaseComponent } from './features/purchase/purchase.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -15,6 +16,7 @@ export const routes: Routes = [
     {path: 'register', component: RegisterComponent},
     {path: 'stock', component: StockComponent},
     {path: 'supplier', component: SupplierComponent},
+    {path: 'purchase', component: PurchaseComponent},
     {path: 'product-form', component: ProductFormComponent},
     {path: 'product-list', component: ProductListComponent},
     {path: 'sales-list', component: SalesCreateComponent},
