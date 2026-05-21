@@ -1,1 +1,106 @@
-/* You can add global styles to this file, and also import other style files */
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: #f4f6f9;
+  color: #1f2937;
+}
+
+/* smooth fonts */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================
+   APP LAYOUT
+========================= */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* main content area */
+.app-content {
+  flex: 1;
+  padding: 20px;
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+/* =========================
+   GLOBAL CARD STYLE
+========================= */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+  border: none;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+button, .btn {
+  border-radius: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover, .btn:hover {
+  transform: translateY(-1px);
+}
+
+/* primary button enhancement */
+.btn-primary {
+  background: #2563eb;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+
+/* =========================
+   FORMS
+========================= */
+input, select, textarea {
+  border-radius: 10px !important;
+  border: 1px solid #e5e7eb !important;
+  padding: 10px 12px;
+  outline: none;
+  transition: 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* =========================
+   SCROLLBAR (nice modern look)
+========================= */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
