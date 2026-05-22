@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-register',
   standalone: true,
   imports: [
-    CommonModule,
+    CommonModule, 
     RouterModule,
     FormsModule,
     ReactiveFormsModule

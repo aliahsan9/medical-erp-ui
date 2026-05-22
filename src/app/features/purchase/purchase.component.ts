@@ -5,6 +5,7 @@ import { Supplier, SupplierService } from '../../core/services/supplier.service'
 import { Product, ProductService } from '../../core/services/product.service';
 import { PurchaseDto, PurchaseService } from '../../core/services/purchase.service';
 import { RouterModule } from '@angular/router';
+import { SupplierComponent } from '../supplier/supplier.component';
 
 
 @Component({
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    SupplierComponent
   ],
   templateUrl: './purchase.component.html',
   styleUrls: ['./purchase.component.scss']

@@ -1,35 +1,197 @@
-<div class="container d-flex justify-content-center align-items-center vh-100">
+<div class="login-page">
 
-  <div class="card shadow p-4" style="width: 400px;">
+  <!-- LEFT CONTENT -->
+  <div class="login-left">
 
-    <h3 class="text-center mb-3">MedicalERP Login</h3>
+    <div class="overlay"></div>
 
-    <div *ngIf="errorMessage" class="alert alert-danger">
-      {{ errorMessage }}
+    <div class="content">
+
+      <div class="logo-box">
+
+        <div class="logo">
+          💊
+        </div>
+
+        <h1>MedicalERP</h1>
+
+      </div>
+
+      <h2>
+        Smart Healthcare Management Platform
+      </h2>
+
+      <p class="subtitle">
+        Streamline pharmacy operations, inventory,
+        invoices, sales, and supplier management
+        in one modern dashboard.
+      </p>
+
+      <div class="feature-list">
+
+        <div class="feature-item">
+
+          <i class="bi bi-shield-check"></i>
+
+          <span>
+            Secure role-based authentication
+          </span>
+
+        </div>
+
+        <div class="feature-item">
+
+          <i class="bi bi-graph-up-arrow"></i>
+
+          <span>
+            Real-time inventory & sales tracking
+          </span>
+
+        </div>
+
+        <div class="feature-item">
+
+          <i class="bi bi-lightning-charge"></i>
+
+          <span>
+            Fast, scalable & responsive experience
+          </span>
+
+        </div>
+
+      </div>
+
     </div>
 
-    <form [formGroup]="form" (ngSubmit)="login()">
+  </div>
 
-      <div class="mb-3">
-        <label>Email</label>
-        <input type="email" class="form-control" formControlName="email">
+  <!-- RIGHT LOGIN -->
+  <div class="login-right">
+
+    <div class="login-card">
+
+      <div class="card-header">
+
+        <h3>Welcome Back</h3>
+
+        <p>
+          Login to continue managing your system
+        </p>
+
       </div>
 
-      <div class="mb-3">
-        <label>Password</label>
-        <input type="password" class="form-control" formControlName="password">
+      <!-- ERROR -->
+      <div
+        *ngIf="errorMessage"
+        class="error-box">
+
+        <i class="bi bi-exclamation-circle"></i>
+
+        {{ errorMessage }}
+
       </div>
 
-      <button class="btn btn-primary w-100" [disabled]="loading">
-        {{ loading ? 'Logging in...' : 'Login' }}
-      </button>
+      <!-- FORM -->
+      <form
+        [formGroup]="form"
+        (ngSubmit)="login()">
 
-    </form>
+        <!-- EMAIL -->
+        <div class="form-group">
 
-    <p class="text-center mt-3">
-      Don't have an account?
-      <a routerLink="/register">Register</a>
-    </p>
+          <label>Email Address</label>
+
+          <div class="input-box">
+
+            <i class="bi bi-envelope"></i>
+
+            <input
+              type="email"
+              placeholder="Enter your email"
+              formControlName="email">
+
+          </div>
+
+          <small
+            *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+
+            Valid email is required
+
+          </small>
+
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="form-group">
+
+          <label>Password</label>
+
+          <div class="input-box">
+
+            <i class="bi bi-lock"></i>
+
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              placeholder="Enter your password"
+              formControlName="password">
+
+            <button
+              type="button"
+              class="eye-btn"
+              (click)="togglePassword()">
+
+              <i
+                class="bi"
+                [ngClass]="showPassword
+                  ? 'bi-eye-slash'
+                  : 'bi-eye'">
+
+              </i>
+
+            </button>
+
+          </div>
+
+          <small
+            *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
+
+            Password is required
+
+          </small>
+
+        </div>
+
+        <!-- LOGIN BUTTON -->
+        <button
+          type="submit"
+          class="login-btn"
+          [disabled]="loading">
+
+          <span *ngIf="!loading">
+            Login
+          </span>
+
+          <span *ngIf="loading">
+            Logging in...
+          </span>
+
+        </button>
+
+      </form>
+
+      <!-- FOOTER -->
+      <div class="footer-text">
+
+        Don't have an account?
+
+        <a routerLink="/register">
+          Create Account
+        </a>
+
+      </div>
+
+    </div>
 
   </div>
+
 </div>
