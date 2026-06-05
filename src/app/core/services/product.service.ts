@@ -20,7 +20,6 @@ export interface Product {
 export class ProductService {
 
   private apiUrl = 'https://localhost:7165/api/products';
-  // change port if needed
 
   constructor(private http: HttpClient) {}
 
