@@ -1,3 +1,4 @@
+<img width="1920" height="1080" alt="medical" src="https://github.com/user-attachments/assets/b1e47180-b09b-4a38-92a9-0279a518c46d" />
 # MedicalERPFrontend
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
